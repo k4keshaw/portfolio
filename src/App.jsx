@@ -295,7 +295,7 @@ export default function App() {
           </h2>
           <p className="mt-4 text-gray-600">Selected film & visual effects work</p>
 
-          <div className="mt-16 grid grid-cols-2 sm:grid-cols-3 md:grid-cols-5 gap-6">
+          <div className="mt-16 grid grid-cols-2 sm:grid-cols-3 md:grid-cols-6 gap-4">
             {imdbProjects.map((movie, i) => (
               <motion.a
                 key={i}
@@ -311,11 +311,14 @@ export default function App() {
               >
 
                 {/* Poster */}
-                <img
-                  src={movie.poster}
-                  alt={movie.title}
-                  className="w-full h-48 object-cover"
-                />
+                <div className="w-full aspect-[3/4] overflow-hidden bg-gray-100">
+                  <img
+                    src={movie.poster}
+                    alt={movie.title}
+                    className="w-full h-full object-cover"
+                  />
+                </div>
+
 
                 {/* Info */}
                 <div className="p-3 text-left">
