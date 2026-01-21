@@ -50,7 +50,7 @@ const imdbProjects = [
     year: 2025,
     role: "Visual Effects Supervisor",
     poster: wildcards,
-    link: "https://www.imdb.com/title/tt28160373/",
+    link: "https://www.imdb.com/title/tt34375923/",
     status: "Completed"
   },
   {
@@ -58,7 +58,7 @@ const imdbProjects = [
     year: 2025,
     role: "Visual Effects Artist",
     poster: killTheGirl,
-    link: "https://www.imdb.com/title/tt29721376/",
+    link: "https://www.imdb.com/title/tt26760587/",
     status: "Post-production"
   },
   {
@@ -66,7 +66,7 @@ const imdbProjects = [
     year: 2024,
     role: "Visual Effects Artist",
     poster: europa,
-    link: "https://www.imdb.com/title/tt28452306/",
+    link: "https://www.imdb.com/title/tt30319894/",
     status: "Short"
   },
   {
@@ -311,15 +311,19 @@ export default function App() {
               >
 
                 {/* Poster */}
-                <div className="w-full aspect-[3/4] overflow-hidden bg-gray-100">
+                <div className="w-full aspect-[3/4] overflow-hidden rounded-md bg-gray-100">
                   <img
                     src={movie.poster}
                     alt={movie.title}
-                    className="w-full h-full object-cover"
+                    className="
+                      w-full h-full object-cover
+                      grayscale
+                      transition-all duration-700 ease-out
+                      group-hover:grayscale-0
+                      group-hover:scale-105
+                    "
                   />
                 </div>
-
-
                 {/* Info */}
                 <div className="p-3 text-left">
                   <h3 className="font-semibold text-xs leading-tight">
