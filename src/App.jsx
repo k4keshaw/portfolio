@@ -233,12 +233,17 @@ export default function App() {
 
             {/* Summary */}
             <motion.p
-              className="mt-6 text-gray-600 text-base md:text-lg leading-relaxed"
+              className="mt-6 max-w-xl text-gray-600 text-base md:text-lg leading-relaxed"
               variants={item}
             >
-              Creating cinematic visuals for film, brands, and emerging tech —
-              blending motion design, VFX, 3D, and AI-driven workflows.
+              <span className="block">
+                Creating cinematic visuals for film, brands, and emerging tech.
+              </span>
+              <span className="block mt-2 text-lg md:text-xl font-semibold text-gray-700">
+                Motion design, VFX, 3D, and AI-driven workflows.
+              </span>
             </motion.p>
+
 
             {/* CTAs */}
             <motion.div
