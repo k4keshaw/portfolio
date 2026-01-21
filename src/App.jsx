@@ -258,14 +258,17 @@ export default function App() {
               </a>
 
               <a
-                href="https://www.behance.net/k4keshaw/projects"
-                target="_blank"
-                rel="noreferrer"
-                className="px-6 py-3 text-sm font-medium underline underline-offset-4 hover:text-gray-600 transition"
+                href="mailto:k4keshaw@gmail.com"
+                className="px-6 py-3 rounded-full
+                          border border-gray-900
+                          text-sm font-semibold text-gray-900
+                          hover:bg-gray-900 hover:text-white
+                          transition"
               >
-                Behance Page
+                Get in touch
               </a>
             </motion.div>
+
 
             {/* Socials */}
             <motion.div
