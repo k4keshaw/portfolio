@@ -1,357 +1,301 @@
-/* ================= IMPORTS ================= */
-
-import profile from "./assets/profile.jpg";
+import { useEffect, useState } from "react";
 import { FaLinkedin, FaBehance, FaInstagram, FaImdb } from "react-icons/fa";
-import { motion } from "framer-motion";
-
-// IMDb posters (ALL imports must be here)
-import wildcards from "./assets/imdb/wildcards.jpg";
-import killTheGirl from "./assets/imdb/kill-the-girl.jpg";
-import europa from "./assets/imdb/europa.jpg";
-import blackHeat from "./assets/imdb/black-heat.jpg";
-import tilDeath from "./assets/imdb/til-death-do-us-part.jpg";
-import callHerKing from "./assets/imdb/call-her-king.jpg";
-import murderAnyone from "./assets/imdb/murder-anyone.jpg";
-import hotSeat from "./assets/imdb/hot-seat.jpg";
-import aDayToDie from "./assets/imdb/a-day-to-die.jpg";
-import deathRider from "./assets/imdb/death-rider-house-of-vampires.jpg";
-import theCall from "./assets/imdb/the-call.jpg";
-import hellOnBorder from "./assets/imdb/hell-on-the-border.jpg";
-import atone from "./assets/imdb/atone.jpg";
-import finalWish from "./assets/imdb/the-final-wish.jpg";
-import riverRunsRed from "./assets/imdb/river-runs-red.jpg";
-import finalShot from "./assets/imdb/final-shot.jpg";
-import shadowEffect from "./assets/imdb/the-shadow-effect.jpg";
-import prayerNeverFails from "./assets/imdb/prayer-never-fails.jpg";
-import operator from "./assets/imdb/operator.jpg";
-import unknownCaller from "./assets/imdb/unknown-caller.jpg";
-
-/* ================= ANIMATIONS ================= */
-
-const container = {
-  hidden: { opacity: 0 },
-  show: { opacity: 1, transition: { staggerChildren: 0.12 } },
-};
-
-const item = {
-  hidden: { opacity: 0, y: 24 },
-  show: {
-    opacity: 1,
-    y: 0,
-    transition: { duration: 0.6, ease: [0.22, 1, 0.36, 1] },
-  },
-};
-
-/* ================= IMDb DATA ================= */
-
-const imdbProjects = [
-  {
-    title: "Wildcards",
-    year: 2025,
-    role: "Visual Effects Supervisor",
-    poster: wildcards,
-    link: "https://www.imdb.com/title/tt34375923/",
-    status: "Completed"
-  },
-  {
-    title: "Kill the Girl",
-    year: 2025,
-    role: "Visual Effects Artist",
-    poster: killTheGirl,
-    link: "https://www.imdb.com/title/tt26760587/",
-    status: "Post-production"
-  },
-  {
-    title: "Europa",
-    year: 2024,
-    role: "Visual Effects Artist",
-    poster: europa,
-    link: "https://www.imdb.com/title/tt30319894/",
-    status: "Short"
-  },
-  {
-    title: "Black Heat",
-    year: 2024,
-    role: "Visual Effects Supervisor",
-    poster: blackHeat,
-    link: "https://www.imdb.com/title/tt1942818/"
-  },
-  {
-    title: "Til Death Do Us Part",
-    year: 2023,
-    role: "Visual Effects Artist",
-    poster: tilDeath,
-    link: "https://www.imdb.com/title/tt27047448/"
-  },
-  {
-    title: "Call Her King",
-    year: 2022,
-    role: "VFX Supervisor",
-    poster: callHerKing,
-    link: "https://www.imdb.com/title/tt27846110/"
-  },
-  {
-    title: "Murder, Anyone?",
-    year: 2022,
-    role: "VFX Consultant",
-    poster: murderAnyone,
-    link: "https://www.imdb.com/title/tt13556744/"
-  },
-  {
-    title: "Hot Seat",
-    year: 2022,
-    role: "Compositor",
-    poster: hotSeat,
-    link: "https://www.imdb.com/title/tt15690300/"
-  },
-  {
-    title: "A Day to Die",
-    year: 2022,
-    role: "VFX Producer & Supervisor",
-    poster: aDayToDie,
-    link: "https://www.imdb.com/title/tt14412366/"
-  },
-  {
-    title: "Death Rider in the House of Vampires",
-    year: 2021,
-    role: "VFX Artist",
-    poster: deathRider,
-    link: "https://www.imdb.com/title/tt11505680/"
-  },
-  {
-    title: "The Call",
-    year: 2020,
-    role: "VFX Artist",
-    poster: theCall,
-    link: "https://www.imdb.com/title/tt12971924/"
-  },
-  {
-    title: "Hell on the Border",
-    year: 2019,
-    role: "VFX Artist",
-    poster: hellOnBorder,
-    link: "https://www.imdb.com/title/tt8652584/"
-  },
-  {
-    title: "Atone",
-    year: 2019,
-    role: "VFX Supervisor",
-    poster: atone,
-    link: "https://www.imdb.com/title/tt5531298/"
-  },
-  {
-    title: "The Final Wish",
-    year: 2018,
-    role: "VFX Artist",
-    poster: finalWish,
-    link: "https://www.imdb.com/title/tt9109306/"
-  },
-  {
-    title: "River Runs Red",
-    year: 2018,
-    role: "VFX Artist",
-    poster: riverRunsRed,
-    link: "https://www.imdb.com/title/tt5843780/"
-  },
-  {
-    title: "Final Shot",
-    year: 2018,
-    role: "VFX Artist",
-    poster: finalShot,
-    link: "https://www.imdb.com/title/tt5867226/"
-  },
-  {
-    title: "The Shadow Effect",
-    year: 2017,
-    role: "VFX Artist",
-    poster: shadowEffect,
-    link: "https://www.imdb.com/title/tt5044656/"
-  },
-  {
-    title: "Prayer Never Fails",
-    year: 2016,
-    role: "VFX Artist",
-    poster: prayerNeverFails,
-    link: "https://www.imdb.com/title/tt4575782/"
-  },
-  {
-    title: "Operator",
-    year: 2015,
-    role: "VFX Artist",
-    poster: operator,
-    link: "https://www.imdb.com/title/tt3849692/"
-  },
-  {
-    title: "Unknown Caller",
-    year: 2014,
-    role: "Compositor / Roto Artist",
-    poster: unknownCaller,
-    link: "https://www.imdb.com/title/tt3384870/"
-  }
-];
-
-
-/* ================= APP ================= */
+import { imdbProjects } from "./data/imdbData";
+import { projects } from "./data/projectsData";
+import getProjectAsset from "./utils/getProjectAsset";
+import Lightbox from "./components/Lightbox";
 
 export default function App() {
+  const [activeTab, setActiveTab] = useState("creative");
+  const [activeProject, setActiveProject] = useState(null);
+  const [scrolled, setScrolled] = useState(false);
+
+  useEffect(() => {
+    const onScroll = () => {
+      setScrolled(window.scrollY > 40);
+    };
+
+    window.addEventListener("scroll", onScroll);
+    return () => window.removeEventListener("scroll", onScroll);
+  }, []);
+
   return (
-    <main className="bg-white text-black">
+    <div className="relative min-h-screen bg-[#F2F3F5] text-[#1A1A1A] overflow-hidden">
 
-      {/* ================= HERO ================= */}
-        <motion.section
-          className="min-h-screen flex items-center justify-center px-6"
-          variants={container}
-          initial="hidden"
-          animate="show"
+      {/* SOCIALS */}
+      <div className="fixed top-6 right-6 z-40">
+        <div
+          className={`flex items-center gap-6 transition-all duration-300
+            ${scrolled ? "text-black" : "text-black/50"}
+          `}
         >
-          <div className="max-w-3xl text-center">
+        {/* GET IN TOUCH */}
+        <a
+          href="mailto:keshaw@email.com"
+          className={`
+            px-4 py-2 text-xs uppercase tracking-[0.3em] rounded-full
+            transition-all duration-300
+            ${
+              scrolled
+                ? "text-white border"
+                : "border bg-white/70"
+            }
+          `}
+          style={{
+            backgroundColor: scrolled ? "#6A5CFF" : "transparent",
+            borderColor: "#6A5CFF",
+            color: scrolled ? "#ffffff" : "#6A5CFF",
+          }}
+          onMouseEnter={(e) => {
+            e.currentTarget.style.backgroundColor = "#6A5CFF";
+            e.currentTarget.style.color = "#ffffff";
+          }}
+          onMouseLeave={(e) => {
+            e.currentTarget.style.backgroundColor = scrolled ? "#6A5CFF" : "transparent";
+            e.currentTarget.style.color = scrolled ? "#ffffff" : "#6A5CFF";
+          }}
+        >
+          Get in touch
+        </a>
 
-            {/* Profile */}
-            <motion.img
-              src={profile}
-              alt="Keshaw Singh"
-              className="w-32 h-32 mx-auto rounded-full object-cover mb-8"
-              variants={item}
-              whileHover={{ scale: 1.05 }}
-            />
 
-            {/* Name */}
-            <motion.h1
-              className="text-4xl md:text-5xl font-bold tracking-tight"
-              variants={item}
+          {/* ICONS */}
+          <div className="flex items-center gap-5 text-2xl">
+            <a
+              href="https://linkedin.com/in/k4keshaw"
+              target="_blank"
+              rel="noreferrer"
+              aria-label="LinkedIn"
+              className={`transition-all duration-300 ${
+                scrolled ? "text-black" : "text-black/50 hover:text-black"
+              }`}
             >
-              Keshaw Singh
-            </motion.h1>
+              <FaLinkedin />
+            </a>
 
-            {/* Role */}
-            <motion.p
-              className="mt-3 text-sm md:text-base uppercase tracking-widest text-gray-500"
-              variants={item}
+            <a
+              href="https://behance.net/k4keshaw"
+              target="_blank"
+              rel="noreferrer"
+              aria-label="Behance"
+              className={`transition-all duration-300 ${
+                scrolled ? "text-black" : "text-black/50 hover:text-black"
+              }`}
             >
-              Motion Design · VFX · AI Visuals
-            </motion.p>
+              <FaBehance />
+            </a>
 
-            {/* Summary */}
-            <motion.p
-              className="mt-6 max-w-xl text-gray-600 text-base md:text-lg leading-relaxed"
-              variants={item}
+            <a
+              href="https://www.imdb.com/name/nm8751429"
+              target="_blank"
+              rel="noreferrer"
+              aria-label="IMDb"
+              className={`transition-all duration-300 ${
+                scrolled ? "text-black" : "text-black/50 hover:text-black"
+              }`}
             >
-              <span className="block">
-                Creating cinematic visuals for film, brands, and emerging tech.
-              </span>
-              <span className="block mt-2 text-lg md:text-xl font-semibold text-gray-700">
-                Motion design, VFX, 3D, and AI-driven workflows.
-              </span>
-            </motion.p>
+              <FaImdb />
+            </a>
 
-
-            {/* CTAs */}
-            <motion.div
-              className="mt-10 flex flex-wrap justify-center gap-6"
-              variants={item}
+            <a
+              href="https://instagram.com/k4keshaw"
+              target="_blank"
+              rel="noreferrer"
+              aria-label="Instagram"
+              className={`transition-all duration-300 ${
+                scrolled ? "text-black" : "text-black/50 hover:text-black"
+              }`}
             >
-              <a
-                href="#film-credits"
-                className="px-6 py-3 border border-gray-300 rounded-full text-sm font-medium hover:bg-black hover:text-white transition"
-              >
-                View Film Credits
-              </a>
-
-              <a
-                href="mailto:k4keshaw@gmail.com"
-                className="px-6 py-3 rounded-full
-                          border border-gray-900
-                          text-sm font-semibold text-gray-900
-                          hover:bg-gray-900 hover:text-white
-                          transition"
-              >
-                Get in touch
-              </a>
-            </motion.div>
-
-
-            {/* Socials */}
-            <motion.div
-              className="mt-10 flex justify-center gap-6 text-xl text-gray-500"
-              variants={item}
-            >
-              <a href="https://linkedin.com/in/k4keshaw" target="_blank" rel="noreferrer"><FaLinkedin /></a>
-              <a href="https://behance.net/k4keshaw" target="_blank" rel="noreferrer"><FaBehance /></a>
-              <a href="https://www.imdb.com/name/nm8751429" target="_blank" rel="noreferrer"><FaImdb /></a>
-              <a href="https://instagram.com/k4keshaw" target="_blank" rel="noreferrer"><FaInstagram /></a>
-            </motion.div>
-
+              <FaInstagram />
+            </a>
           </div>
-        </motion.section>
+        </div>
+      </div>
+              
+      {/* HERO */}
+      <header className="border-b border-black/10 bg-gradient-to-b from-white via-[#F5F6F8] to-white">
+        <div className="max-w-7xl mx-auto px-6 py-28 grid grid-cols-1 md:grid-cols-2 gap-24 items-start">
 
+          {/* LEFT — IDENTITY + VISION */}
+          <div className="max-w-2xl">
+            {/* NAME */}
+            <h1 className="text-4xl md:text-5xl font-semibold tracking-tight text-black leading-tight">
+              Keshaw Singh
+            </h1>
 
-      {/* ================= IMDb ================= */}
-      
-      <section className="py-24 px-6">
-        <section id="film-credits" className="py-24 px-6"></section>
-        <div className="max-w-6xl mx-auto text-center">
-          <h2 className="text-3xl md:text-4xl font-bold">
-            Film Credits <span className="text-gray-400">(IMDb)</span>
-          </h2>
-          <p className="mt-4 text-gray-600">Selected film & visual effects work</p>
+            {/* TAGLINE */}
+            <p className="mt-4 text-sm italic text-black/60">
+              Obsessed with pixels.
+            </p>
 
-          <div className="mt-16 grid grid-cols-2 sm:grid-cols-3 md:grid-cols-6 gap-4">
-            {imdbProjects.map((movie, i) => (
-              <motion.a
-                key={i}
-                href={movie.link}
+            {/* VISION */}
+            <p className="mt-10 max-w-[38rem] text-xl md:text-2xl leading-snug text-black">
+              I design motion systems that turn complex ideas into
+              clear, expressive visual experiences.
+            </p>
+
+            {/* ABOUT / SCOPE */}
+            <p className="mt-6 max-w-[36rem] text-base leading-relaxed text-black/70">
+              Motion Designer at{" "}
+              <a
+                href="https://supra.com/"
                 target="_blank"
-                rel="noopener noreferrer"
-                className="group border rounded-lg overflow-hidden bg-white hover:shadow-md transition cursor-pointer"
-                variants={item}
-                initial="hidden"
-                whileInView="show"
-                viewport={{ once: true }}
-                whileHover={{ y: -6 }}
+                rel="noreferrer"
+                className="font-medium transition-opacity hover:opacity-80"
+                style={{ color: "#6A5CFF" }}
               >
+                Supra
+              </a>
+              , creating motion-led videos for products, marketing, and social —
+              working across film, gaming, and emerging tech to build scalable
+              visual systems using motion, VFX, and 3D.
+            </p>
+          </div>
 
-                {/* Poster */}
-                <div className="w-full aspect-[3/4] overflow-hidden rounded-md bg-gray-100">
-                  <img
-                    src={movie.poster}
-                    alt={movie.title}
-                    className="
-                      w-full h-full object-cover
-                      grayscale
-                      transition-all duration-700 ease-out
-                      group-hover:grayscale-0
-                      group-hover:scale-105
-                    "
+          {/* RIGHT — FOCUS AREAS */}
+          <div className="pt-10">
+            <p className="text-xs uppercase tracking-[0.4em] text-black/40 mb-12">
+              Focus Areas
+            </p>
+
+            <ul className="space-y-6">
+              {[
+                "Scalable Motion Design Assets",
+                "Motion Design & Visual Systems",
+                "Technical / Conceptual Visualization",
+                "CGI & VFX Pipelines",
+                "FX Simulations (Particles / RBD / Pyro)",
+              ].map((item, i) => (
+                <li key={i} className="flex items-start gap-6">
+                  {/* PURPLE OUTLINE BULLET */}
+                  <span
+                    className="mt-[7px] h-2 w-2 rounded-full border"
+                    style={{ borderColor: "#6A5CFF" }}
                   />
-                </div>
-                {/* Info */}
-                <div className="p-3 text-left">
-                  <h3 className="font-semibold text-xs leading-tight">
-                    {movie.title}
-                  </h3>
 
-                  <p className="text-[11px] text-gray-400">
-                    {movie.year}
-                  </p>
-
-                  {/* Role Badge */}
-                  {movie.status && (
-                    <p className="text-[10px] text-gray-400 mt-1 italic">
-                      {movie.status}
-                    </p>
-                  )}
-                <p className="mt-2 text-[11px] font-semibold text-gray-900 tracking-wide">
-                  {movie.role}
-                </p>
-
-                </div>
-              </motion.a>
-            ))}
+                  {/* TEXT */}
+                  <span className="text-base text-black/70 leading-snug">
+                    {item}
+                  </span>
+                </li>
+              ))}
+            </ul>
           </div>
 
         </div>
-      </section>
+      </header>
 
-    </main>
+
+
+
+
+
+
+      {/* TABS */}
+      <div className="sticky top-0 z-30 bg-[#F2F3F5]/90 backdrop-blur border-b border-black/10">
+        <div className="max-w-7xl mx-auto px-6 py-6 flex justify-center gap-12">
+          <button
+            onClick={() => setActiveTab("creative")}
+            className={
+              activeTab === "creative"
+                ? "font-semibold border-b-2 border-black"
+                : "text-black/40"
+            }
+          >
+            Creative / 3D Works
+          </button>
+
+          <button
+            onClick={() => setActiveTab("film")}
+            className={
+              activeTab === "film"
+                ? "font-semibold border-b-2 border-black"
+                : "text-black/40"
+            }
+          >
+            Film Works (IMDb)
+          </button>
+        </div>
+      </div>
+
+      {/* CREATIVE GRID */}
+      {activeTab === "creative" && (
+        <main className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-0">
+          {projects.map((project) => (
+            <div
+              key={project.id}
+              onClick={() => setActiveProject(project)}
+              className="group relative cursor-pointer overflow-hidden"
+            >
+              <img
+                src={getProjectAsset(project.id, "cover")}
+                loading="lazy"
+                className="w-full aspect-[16/9] object-cover grayscale group-hover:grayscale-0 transition"
+                alt=""
+              />
+
+              <div className="absolute inset-0 bg-black/40 opacity-0 group-hover:opacity-100 flex items-center justify-center transition">
+                <p className="text-white font-semibold text-lg text-center px-6">
+                  {project.title}
+                </p>
+              </div>
+            </div>
+          ))}
+        </main>
+      )}
+
+      {/* IMDb GRID */}
+      {activeTab === "film" && (
+        <section className="py-24 px-6">
+          <div className="max-w-6xl mx-auto grid grid-cols-2 sm:grid-cols-3 md:grid-cols-6 gap-6">
+            {imdbProjects.map((movie, i) => (
+              <a
+                key={i}
+                href={movie.link}
+                target="_blank"
+                rel="noreferrer"
+                className="group block space-y-2"
+              >
+                {/* Poster */}
+                <img
+                  src={movie.poster}
+                  alt={movie.title}
+                  loading="lazy"
+                  className="w-full aspect-[3/4] object-cover grayscale group-hover:grayscale-0 transition"
+                />
+
+                {/* Meta */}
+                <div className="text-center px-1">
+                  {/* Title + Year */}
+                  <p className="text-xs font-medium text-black/80 leading-snug">
+                    {movie.title}{" "}
+                    <span className="text-black/50 font-normal">
+                      ({movie.year})
+                    </span>
+                  </p>
+
+                  {/* Role */}
+                  {movie.role && (
+                    <p className="text-[11px] text-black/50 mt-0.5">
+                      {movie.role}
+                    </p>
+                  )}
+                </div>
+              </a>
+            ))}
+          </div>
+        </section>
+      )}
+
+
+
+      {/* LIGHTBOX */}
+      {activeProject && (
+        <Lightbox
+          project={activeProject}
+          onClose={() => setActiveProject(null)}
+        />
+      )}
+    </div>
   );
 }

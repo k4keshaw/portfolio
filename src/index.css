@@ -5,3 +5,94 @@
 html {
   scroll-behavior: smooth;
 }
+
+/* ================= BACKGROUND CELL ANIMATION ================= */
+
+@keyframes cellMove {
+  0%, 100% {
+    transform: translate(0, 0);
+    opacity: 0.25;
+  }
+  50% {
+    transform: translate(14px, -14px);
+    opacity: 0.45;
+  }
+}
+
+/* ================= NEON BORDER ANIMATION ================= */
+
+.neon-border {
+  pointer-events: none;
+  border: 1.5px solid transparent;
+  background:
+    linear-gradient(#111318, #111318) padding-box,
+    linear-gradient(
+      120deg,
+      #6cff8d,
+      #4fffff,
+      #7c7cff,
+      #6cff8d
+    ) border-box;
+  animation: neonMove 6s linear infinite;
+}
+
+@keyframes neonMove {
+  0% {
+    background-position: 0% 50%;
+  }
+  100% {
+    background-position: 200% 50%;
+  }
+}
+
+/* ================= SKILL BUBBLE INTERACTION ================= */
+
+.skill-item {
+  position: relative;
+  display: inline-block;
+  cursor: default;
+  transition: transform 0.5s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+/* bubble nudge */
+.skill-item:hover {
+  transform: translateX(6px);
+}
+
+/* alternate direction automatically */
+.skill-item:nth-child(even):hover {
+  transform: translateX(-6px);
+}
+
+
+/* hide scrollbar but keep scroll */
+.no-scrollbar {
+  -ms-overflow-style: none; /* IE & Edge */
+  scrollbar-width: none; /* Firefox */
+}
+
+.no-scrollbar::-webkit-scrollbar {
+  display: none; /* Chrome, Safari */
+}
+
+
+/* --- Animated dotted grid background --- */
+.hero-dots {
+  position: relative;
+  background-color: #f5f5f5;
+  background-image: radial-gradient(
+    rgba(0, 0, 0, 0.12) 0.6px,
+    transparent 0.6px
+  );
+  background-size: 22px 22px;
+  animation: dotsMove 40s linear infinite;
+}
+
+@keyframes dotsMove {
+  from {
+    background-position: 0 0;
+  }
+  to {
+    background-position: 100px 100px;
+  }
+}
