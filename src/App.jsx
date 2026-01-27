@@ -67,8 +67,11 @@ export default function App() {
               rel="noreferrer"
               aria-label="LinkedIn"
               className={`transition-all duration-300 ${
-                scrolled ? "text-black" : "text-black/50 hover:text-black"
+                scrolled
+                  ? "hover:opacity-90"
+                  : "opacity-60 hover:opacity-100"
               }`}
+              style={{ color: "#6A5CFF" }}
             >
               <FaLinkedin />
             </a>
@@ -79,8 +82,11 @@ export default function App() {
               rel="noreferrer"
               aria-label="Behance"
               className={`transition-all duration-300 ${
-                scrolled ? "text-black" : "text-black/50 hover:text-black"
+                scrolled
+                  ? "hover:opacity-90"
+                  : "opacity-60 hover:opacity-100"
               }`}
+              style={{ color: "#6A5CFF" }}
             >
               <FaBehance />
             </a>
@@ -91,8 +97,11 @@ export default function App() {
               rel="noreferrer"
               aria-label="IMDb"
               className={`transition-all duration-300 ${
-                scrolled ? "text-black" : "text-black/50 hover:text-black"
+                scrolled
+                  ? "hover:opacity-90"
+                  : "opacity-60 hover:opacity-100"
               }`}
+              style={{ color: "#6A5CFF" }}
             >
               <FaImdb />
             </a>
@@ -103,12 +112,16 @@ export default function App() {
               rel="noreferrer"
               aria-label="Instagram"
               className={`transition-all duration-300 ${
-                scrolled ? "text-black" : "text-black/50 hover:text-black"
+                scrolled
+                  ? "hover:opacity-90"
+                  : "opacity-60 hover:opacity-100"
               }`}
+              style={{ color: "#6A5CFF" }}
             >
               <FaInstagram />
             </a>
           </div>
+
         </div>
       </div>
               
