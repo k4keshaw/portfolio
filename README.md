@@ -1,16 +1,58 @@
-# React + Vite
+# Keshaw Singh — Motion Designer & Visual Systems
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+Personal portfolio of **Keshaw Singh**, a motion designer focused on building
+**scalable motion design systems** for products, marketing, and storytelling.
 
-Currently, two official plugins are available:
+The site showcases selected work across motion design, VFX, 3D, and technical
+visualization — with a focus on clarity, systems thinking, and expressive visuals.
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) (or [oxc](https://oxc.rs) when used in [rolldown-vite](https://vite.dev/guide/rolldown)) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+---
 
-## React Compiler
+## 👋 About
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+I design motion systems that turn complex ideas into clear, expressive
+visual experiences.
 
-## Expanding the ESLint configuration
+Currently working as a **Motion Designer at [Supra](https://supra.com/)**,
+creating motion-led videos for products, marketing, and social — spanning
+film, gaming, and emerging tech.
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+Obsessed with pixels.
+
+---
+
+## 🧠 Focus Areas
+
+- Scalable Motion Design Assets  
+- Motion Design & Visual Systems  
+- Technical / Conceptual Visualization  
+- CGI & VFX Pipelines  
+- FX Simulations (Particles / RBD / Pyro)
+
+---
+
+## 🛠 Tech Stack
+
+- **Frontend:** React, Vite, Tailwind CSS
+- **Animation:** Framer Motion
+- **3D / Motion:** Cinema 4D, Houdini, Redshift
+- **Deployment:** Vercel
+- **Version Control:** Git & GitHub
+
+---
+
+## 🔗 Links
+
+- Portfolio: https://keshawsingh.com  
+- IMDb: https://www.imdb.com/name/nm8751429  
+- LinkedIn: https://linkedin.com/in/k4keshaw  
+- Behance: https://behance.net/k4keshaw  
+- Instagram: https://instagram.com/k4keshaw  
+
+---
+
+## 🚀 Running Locally
+
+```bash
+npm install
+npm run dev
