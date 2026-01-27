@@ -96,3 +96,8 @@ html {
     background-position: 100px 100px;
   }
 }
+// ================= COLOR VARIABLES  icons ================= */
+:root {
+  --accent-default: #111111;   /* before scroll */
+  --accent-scroll: #2b1e5a;    /* dark purple (premium) */
+}

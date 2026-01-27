@@ -22,108 +22,50 @@ export default function App() {
   return (
     <div className="relative min-h-screen bg-[#F2F3F5] text-[#1A1A1A] overflow-hidden">
 
-      {/* SOCIALS */}
-      <div className="fixed top-6 right-6 z-40">
-        <div
-          className={`flex items-center gap-6 transition-all duration-300
-            ${scrolled ? "text-black" : "text-black/50"}
-          `}
-        >
-        {/* GET IN TOUCH */}
-        <a
-          href="mailto:keshaw@email.com"
-          className={`
-            px-4 py-2 text-xs uppercase tracking-[0.3em] rounded-full
-            transition-all duration-300
-            ${
-              scrolled
-                ? "text-white border"
-                : "border bg-white/70"
-            }
-          `}
-          style={{
-            backgroundColor: scrolled ? "#6A5CFF" : "transparent",
-            borderColor: "#6A5CFF",
-            color: scrolled ? "#ffffff" : "#6A5CFF",
-          }}
-          onMouseEnter={(e) => {
-            e.currentTarget.style.backgroundColor = "#6A5CFF";
-            e.currentTarget.style.color = "#ffffff";
-          }}
-          onMouseLeave={(e) => {
-            e.currentTarget.style.backgroundColor = scrolled ? "#6A5CFF" : "transparent";
-            e.currentTarget.style.color = scrolled ? "#ffffff" : "#6A5CFF";
-          }}
-        >
-          Get in touch
-        </a>
+    {/* HEADER FADE + SOCIALS */}
+    <div className="fixed top-0 left-0 w-full z-40 pointer-events-none">
 
+      {/* FADE BACKDROP */}
+      <div
+        className="
+          absolute top-0 left-0 w-full h-28
+          bg-gradient-to-b from-white/95 via-white/70 to-transparent
+        "
+      />
+
+      {/* SOCIAL CONTENT */}
+      <div className="relative flex justify-end px-6 pt-6 pointer-events-auto">
+        <div className="flex items-center gap-6">
+
+          {/* GET IN TOUCH */}
+          <a
+            href="mailto:keshaw@email.com"
+            className="
+              px-4 py-2 text-xs uppercase tracking-[0.3em] rounded-full
+              bg-white text-black border border-black
+              transition-all duration-300
+              hover:bg-black hover:text-white
+            "
+          >
+            Get in touch
+          </a>
 
           {/* ICONS */}
           <div className="flex items-center gap-5 text-2xl">
-            <a
-              href="https://linkedin.com/in/k4keshaw"
-              target="_blank"
-              rel="noreferrer"
-              aria-label="LinkedIn"
-              className={`transition-all duration-300 ${
-                scrolled
-                  ? "hover:opacity-90"
-                  : "opacity-60 hover:opacity-100"
-              }`}
-              style={{ color: "#6A5CFF" }}
-            >
-              <FaLinkedin />
-            </a>
-
-            <a
-              href="https://behance.net/k4keshaw"
-              target="_blank"
-              rel="noreferrer"
-              aria-label="Behance"
-              className={`transition-all duration-300 ${
-                scrolled
-                  ? "hover:opacity-90"
-                  : "opacity-60 hover:opacity-100"
-              }`}
-              style={{ color: "#6A5CFF" }}
-            >
-              <FaBehance />
-            </a>
-
-            <a
-              href="https://www.imdb.com/name/nm8751429"
-              target="_blank"
-              rel="noreferrer"
-              aria-label="IMDb"
-              className={`transition-all duration-300 ${
-                scrolled
-                  ? "hover:opacity-90"
-                  : "opacity-60 hover:opacity-100"
-              }`}
-              style={{ color: "#6A5CFF" }}
-            >
-              <FaImdb />
-            </a>
-
-            <a
-              href="https://instagram.com/k4keshaw"
-              target="_blank"
-              rel="noreferrer"
-              aria-label="Instagram"
-              className={`transition-all duration-300 ${
-                scrolled
-                  ? "hover:opacity-90"
-                  : "opacity-60 hover:opacity-100"
-              }`}
-              style={{ color: "#6A5CFF" }}
-            >
-              <FaInstagram />
-            </a>
+            <a className="text-black hover:opacity-80 transition-opacity"><FaLinkedin /></a>
+            <a className="text-black hover:opacity-80 transition-opacity"><FaBehance /></a>
+            <a className="text-black hover:opacity-80 transition-opacity"><FaImdb /></a>
+            <a className="text-black hover:opacity-80 transition-opacity"><FaInstagram /></a>
           </div>
 
         </div>
       </div>
+    </div>
+
+
+
+
+
               
       {/* HERO */}
       <header className="border-b border-black/10 bg-gradient-to-b from-white via-[#F5F6F8] to-white">
@@ -155,12 +97,12 @@ export default function App() {
                 target="_blank"
                 rel="noreferrer"
                 className="font-medium transition-opacity hover:opacity-80"
-                style={{ color: "#6A5CFF" }}
+                style={{ color: "#DD1438" }}
               >
                 Supra
               </a>
-              , creating motion-led videos for products, marketing, and social —
-              working across film, gaming, and emerging tech to build scalable
+              , creating motion-led videos for products, marketing, and socials
+              working across film, mobile gaming, and tech to build scalable
               visual systems using motion, VFX, and 3D.
             </p>
           </div>
