@@ -25,38 +25,68 @@ export default function Lightbox({ project, onClose }) {
   return (
     <div
       onClick={handleClose}
-      className={`fixed inset-0 z-50 bg-black/80 backdrop-blur-sm
+      className={`
+        fixed inset-0 z-50
+        bg-black/80 backdrop-blur-sm
         transition-opacity duration-200
-        ${visible ? "opacity-100" : "opacity-0"}`}
+        ${visible ? "opacity-100" : "opacity-0"}
+      `}
     >
-      {/* CLOSE BUTTON */}
-      <button
-        onClick={handleClose}
-        className="fixed top-6 right-6 z-50 text-white text-2xl"
-      >
-        ✕
-      </button>
+      {/* STICKY LIGHTBOX HEADER */}
+      <div className="fixed top-0 left-0 w-full z-50 pointer-events-none">
+        
+        {/* FADE BACKDROP */}
+        <div
+          className="
+            absolute top-0 left-0 w-full h-24
+            bg-gradient-to-b from-black/85 via-black/50 to-transparent
+          "
+        />
 
-      {/* CENTERED TITLE */}
-      <div className="fixed top-6 left-1/2 -translate-x-1/2 z-40 text-center pointer-events-none">
-        <h1 className="text-white text-sm md:text-base tracking-widest uppercase">
-          {project.title}
-        </h1>
+        {/* HEADER CONTENT */}
+        <div className="relative flex items-start justify-between px-4 pt-4 pointer-events-auto">
+          
+          {/* TITLE */}
+          <div>
+            <h1 className="text-white text-xs md:text-sm tracking-widest uppercase">
+              {project.title}
+            </h1>
 
-        {project.subtitle && (
-          <p className="text-white/50 text-xs mt-1">
-            {project.subtitle}
-          </p>
-        )}
+            {project.subtitle && (
+              <p className="text-white/50 text-[10px] mt-1">
+                {project.subtitle}
+              </p>
+            )}
+          </div>
+
+          {/* CLOSE BUTTON */}
+          <button
+            onClick={handleClose}
+            aria-label="Close lightbox"
+            className="
+              w-10 h-10 rounded-full
+              flex items-center justify-center
+              bg-white text-black
+              transition-all duration-200
+              active:scale-95
+            "
+          >
+            ✕
+          </button>
+
+        </div>
       </div>
 
       {/* SCROLLABLE CONTENT */}
       <div
         onClick={(e) => e.stopPropagation()}
-        className={`relative max-w-5xl mx-auto px-6 py-32 space-y-10
+        className={`
+          relative max-w-5xl mx-auto
+          px-6 py-32 space-y-10
           max-h-screen overflow-y-auto no-scrollbar
           transition-transform duration-200
-          ${visible ? "translate-y-0 scale-100" : "translate-y-4 scale-95"}`}
+          ${visible ? "translate-y-0 scale-100" : "translate-y-4 scale-95"}
+        `}
       >
         {/* VIDEO */}
         {project.vimeoId && (
